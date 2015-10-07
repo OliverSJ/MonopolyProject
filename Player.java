@@ -6,5 +6,5 @@
 
 public class Player
 {
-
+	private int moneyAmt;		//The amount of money a player has
 }
