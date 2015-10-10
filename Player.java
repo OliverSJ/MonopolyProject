@@ -11,9 +11,11 @@ public class Player
 
     private int wealth;                                         //The amount of money a player has
     private int playerPosition;                                 //The player's position on the board
-    private int token;                                          //The player's token
+    private String token;                                       //The player's token
     private boolean[] properties;                               //The player's properties, array
                                                                 // is indexed via the board positions
+    private String stringVal;                                   //String representation of all of 
+                                                                //  the player's properties
 
     public Player()
     //POST: A default Player object is contructed with moneyAmt set to 1500 (the starting amount of
@@ -24,10 +26,11 @@ public class Player
         playerPosition = 0;
         token = 0;
         properties = new boolean[NUM_OF_BOARD_POSITIONS];
+        stringVal = " ";
 
     }
 
-    public Player(int token)
+    public Player(String token)
     //PRE:  token >=0
     //POST: A Player object is constructed with private class member token being set to token
     {
@@ -60,8 +63,58 @@ public class Player
         return (wealth >= 0) ? true : false;
     }
 
+//============================================================
+
+    /*  TODO: Find out if they'll actually call it the Properties class and what the name of the 
+                data member will be
+        Also find out how I'm going to represent the Token.  Maybe have the team send me their 
+        Token class?
 
 
+    */
+    public String getProperties(Properties[] properties)
+    //PRE:  properties is initialized
+    //POST: FCTVAL == string representation of all of the Player's properties
+    {               
+
+        //Iterator through all of the private class member array properties.  If any value is true,
+        // use that index to look up the properties' name
+        for(int i = 0; i < NUM_OF_BOARD_POSITIONS; ++i)
+        {
+            if(this.properties[i] == true)              
+            {
+                //stringVal += 
+            }
+        }
+    }
+
+    //toString method
+    public String toString(Properties[] properties)
+    {
+        stringVal = getProperties(properties);
+        return "Player's Token";
+
+    }  
+
+//============================================================
+
+    public int getWealth()
+    //POST: FCTVAL == private class member wealth
+    {
+        return wealth;
+    }
+
+    public int getPlayerPosition()
+    /POST:  FCTVAL == private class member playerPosition
+    {
+        return playerPosition;
+    }
+
+    private int getToken()
+    //POST: FCTVAL == private class member token;
+    {
+        return token;
+    }
 
 
 }
