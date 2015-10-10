@@ -1,7 +1,7 @@
 //Programmer: Shagiya Mansuri
+//Board Class
 
-
-public class Board 
+public abstract class Board 
 {
     protected final int address;
     protected final String name;
@@ -22,5 +22,7 @@ public class Board
     	this.address = address;
     	this.name = name;
     }
+
+    public abstract boolean payRent(Player p);
 }
 

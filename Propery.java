@@ -1,9 +1,9 @@
 //Programmer: Shagiya Mansuri
+//Proprty class
 
 public class Property extends Board
 {
-    protected final int price;
-    protected int rent;
+    protected int price;
     protected String owner;
     
     public Property()
@@ -12,40 +12,46 @@ public class Property extends Board
     {
     	super(0, "");
     	owner = "";
-    	rent = 10;
     	price = 150;
     }
     
-    public Property(int address, String name, int cost, int rentAmt)
+    public Property(int address, String name, int cost)
     //PRE:  address is initialized and address >= 0
-    //      cost and rentAmt >= 0
+    //      cost >= 0
     //      name is initialized
     //POST: A Property object is created with class member address set to address, class member
-    //         name set to null, price set to cost, rent set to rentAmt and owner set to null
+    //         name set to null, price set to cost, and owner set to null
     {
     	super(address, name);
     	price = cost;
-    	rent = rentAmt;
     	owner = "";	
     }
     
-    public void buyProperty(Player p)
+    //TODO: Player has to set property in array to true;
+    public boolean buy(Player p)
     {
-        if(owner.equals(p.getToken())
-        {
-            
-        }    	
-    }
-    
-    public boolean payRent(Player p)
-    {
-    	if (!owner.equals(p.getToken()))
-    	{	
-    	    p.chargeRent(rent);
+    	boolean canBuy;
+    	
+    	if (owner.equals(p.getToken()))		        //Owner is bank
+    	{
+    		canBuy = p.buyProperties(price, address); //Check if player has money to buy
+    		
+    		if(canBuy)                              //player has money
+    		{
+    		    owner = p.getToken();               //set token
+    		    p.setProperties(address);           //player owns location
+    		    return true;                        //successful buy
+    		}
     	}
     	
-    	return false;
+    	return false;							//unsuccessful buy
     }
-
+    
+    //TODO: WHAT DO I DO WITH THIS METHOD?
+    @Override
+    public boolean payRent(Player p) 
+    {
+	return false;
+    }
 }
 
