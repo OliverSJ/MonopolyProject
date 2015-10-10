@@ -12,7 +12,8 @@ public class Player
     private int moneyAmt;                                       //The amount of money a player has
     private int playerPosition;                                 //The player's position on the board
     private int token;                                          //The player's token
-    private boolean[] properties;                               //The player's properties
+    private boolean[] properties;                               //The player's properties, array
+                                                                // is indexed via the board positions
 
     public Player()
     //POST: A default Player object is contructed with moneyAmt set to 1500 (the starting amount of
@@ -35,11 +36,27 @@ public class Player
     }
 
     public void movePosition(int diceValue)
-    //PRE:  diceValue >=2 && diceValue <= 12
+    //PRE:  diceValue >=2 && diceValue <= 12 && diceValue is the sum of both dice in game
     //POST: The Player's position is updated by moving it ahead by the sum of the dice values
     {
         playerPosition += diceValue;
     }
+
+    public void addProperty(int propertyBoardPosition)
+    //PRE:  propertyBoardPosition > 0 && propertyBoardPosition <= 40 && the property on 
+    //      propertyBoardPosition is not owned by another player
+    //POST: properties is updated to indicate that the player owns the property on the board position
+    {
+        properties[propertyBoardPosition] = true;
+    }
+
+    public boolean changeMoneyAmount(int changeValue)
+    //PRE:
+    //POST: 
+    {  
+
+    }
+
 
 
 
