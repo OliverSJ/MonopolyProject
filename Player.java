@@ -9,7 +9,7 @@ public class Player
     //Data Dictionary
     private static final int NUM_OF_BOARD_POSITIONS = 40;       //Number of board positions
 
-    private int moneyAmt;                                       //The amount of money a player has
+    private int wealth;                                         //The amount of money a player has
     private int playerPosition;                                 //The player's position on the board
     private int token;                                          //The player's token
     private boolean[] properties;                               //The player's properties, array
@@ -20,7 +20,7 @@ public class Player
     //      money for each player in the game), playerPosition set to 0, token set to 0, and 
     //      allocating the properties array
     {
-        moneyAmt = 1500;
+        wealth = 1500;
         playerPosition = 0;
         token = 0;
         properties = new boolean[NUM_OF_BOARD_POSITIONS];
@@ -50,11 +50,14 @@ public class Player
         properties[propertyBoardPosition] = true;
     }
 
-    public boolean changeMoneyAmount(int changeValue)
-    //PRE:
-    //POST: 
+    public boolean changeWealth(int changeValue)
+    //PRE:  changeValue is initialized
+    //POST: FCTVAL == true if the game should continue or false if it should not (player has become
+    //      bankrupt)
     {  
+        wealth += changeValue;
 
+        return (wealth >= 0) ? true : false;
     }
 
 
