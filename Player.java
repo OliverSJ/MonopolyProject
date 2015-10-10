@@ -24,7 +24,7 @@ public class Player
     {
         wealth = 1500;
         playerPosition = 0;
-        token = 0;
+        token = " ";
         properties = new boolean[NUM_OF_BOARD_POSITIONS];
         stringVal = " ";
 
