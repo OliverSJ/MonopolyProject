@@ -16,6 +16,11 @@ public class Player
                                                                 // is indexed via the board positions
     private String stringVal;                                   //String representation of all of 
                                                                 //  the player's properties
+    private int numOfRailroadsOwned;                            //The number of railroads the player
+                                                                //  owns
+    private int numOfUtilitiesOwned;                            //The number of utilities the player
+                                                                //  owns
+
 
     public Player()
     //POST: A default Player object is contructed with moneyAmt set to 1500 (the starting amount of
@@ -27,6 +32,8 @@ public class Player
         token = " ";
         properties = new boolean[NUM_OF_BOARD_POSITIONS];
         stringVal = " ";
+        numOfUtilitiesOwned = 0;
+        numOfRailroadsOwned = 0;
 
     }
 
@@ -61,6 +68,18 @@ public class Player
         wealth += changeValue;
 
         return (wealth >= 0) ? true : false;
+    }
+
+    public void addRailRoad()
+    //POST: FCTVAL == private class member numOfRailroadsOwned is increased by one
+    {
+        numOfRailroadsOwned++;
+    }
+
+    public void addUtility()
+    //POST: FCTVAL == private class member numOfUtilitiesOwned is increased by one
+    {
+        numOfUtilitiesOwned++;
     }
 
 //============================================================
@@ -110,10 +129,22 @@ public class Player
         return playerPosition;
     }
 
-    private int getToken()
-    //POST: FCTVAL == private class member token;
+    public String getToken()
+    //POST: FCTVAL == private class member token
     {
         return token;
+    }
+
+    public int getNumOfRailRoads()
+    //POST: FCTVAL == private class member numOfRailroadsOwned
+    { 
+        return numOfRailroadsOwned;
+    }
+
+    public int getNumOfUtilities()
+    //POST: FCTVAL == private class member numOfUtilitiesOwned
+    {
+        return numOfUtilitiesOwned;
     }
 
 
