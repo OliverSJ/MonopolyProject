@@ -3,8 +3,8 @@
 
 public abstract class Board 
 {
-    protected final int address;
-    protected final String name;
+    protected final int address;                     //Address of board location
+    protected final String name;                     //Name of board location
     
     public Board()
     //POST: A default Board object is created with address set to 0 and name set to " ".
@@ -23,6 +23,11 @@ public abstract class Board
     	this.name = name;
     }
 
-    public abstract boolean payRent(Player p);
+    public abstract boolean payRent(Player p);	     //Abstract methos for paying rent
+ 
+    public String toString()
+    {
+    	return "Location name: " + name + ". Address: " + address + ". ";
+    }
 }
 
