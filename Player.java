@@ -109,7 +109,7 @@ public class Player
             }
 
             else if(this.properties[i] == true)      //If the player owns that property, then add it to             
-            {                                   //  to stringVal
+            {                                        //  to stringVal
 
                 stringVal += ", " + properties[i].name;
             }
@@ -119,17 +119,18 @@ public class Player
         return stringVal;
     }
 
-//============================================================
-
-    //toString method
     public String toString(Property[] properties)
+    //PRE: properties is initialized
+    //POST: FCTVAL == string representation of all of the Player object's attributes
     {
         stringVal = getProperties(properties);
-        return "Player's Token:" + token + "\n" + "Player's Wealth: " + wealth + "\n";
+        return "Player's Token:" + token + "\n" + "Player's Wealth: " + wealth + "\n" + 
+                "Player's position: " + playerPosition + "\n" + 
+                "Number of Railroads this player owns: " + numOfRailroadsOwned +
+                "Number of utilities this player owns: " + numOfUtilitiesOwned + 
+                "Properties owned by player: " + stringVal + "\n";
 
     }  
-
-//============================================================
 
     public int getWealth()
     //POST: FCTVAL == private class member wealth
