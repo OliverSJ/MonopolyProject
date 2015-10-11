@@ -1,6 +1,6 @@
 // Programmer:  Oliver San Juan
 // Assignment:  Monopoly Project
-// Date:        October 6, 2015
+// Date:        October 10, 2015
 // Description: This file will create an instance of the Player object.
 //
 
@@ -52,14 +52,6 @@ public class Player
         playerPosition += diceValue;
     }
 
-    public void addProperty(int propertyBoardPosition)
-    //PRE:  propertyBoardPosition > 0 && propertyBoardPosition <= 40 && the property on 
-    //      propertyBoardPosition is not owned by another player
-    //POST: properties is updated to indicate that the player owns the property on the board position
-    {
-        properties[propertyBoardPosition] = true;
-    }
-
     public boolean changeWealth(int changeValue)
     //PRE:  changeValue is initialized
     //POST: FCTVAL == true if the game should continue or false if it should not (player has become
@@ -68,6 +60,25 @@ public class Player
         wealth += changeValue;
 
         return (wealth >= 0) ? true : false;
+    }
+
+    public boolean buyProperty(int cost, int propertyBoardPosition)
+    //PRE:  cost > 0 && propertyBoardPosition > 0 && propertyBoardPosition <= 40 && the property on 
+    //      propertyBoardPosition is not owned by another player
+    //POST: properties is updated to indicate that the player owns the property on the board position
+    //      FCTVAL == true if the purchase was successful, false if it was not
+    {
+        if((wealth - cost) > 0)         //If the person can afford it
+        {   
+            wealth -= cost;
+            properties[propertyBoardPosition] = true;
+            return true;
+        }
+
+        else
+        {
+            return false;
+        }
     }
 
     public void addRailRoad()
@@ -82,36 +93,39 @@ public class Player
         numOfUtilitiesOwned++;
     }
 
-//============================================================
-
-    /*  TODO: Find out if they'll actually call it the Properties class and what the name of the 
-                data member will be
-        Also find out how I'm going to represent the Token.  Maybe have the team send me their 
-        Token class?
-
-
-    */
-    public String getProperties(Properties[] properties)
+    public String getProperties(Property[] properties)
     //PRE:  properties is initialized
     //POST: FCTVAL == string representation of all of the Player's properties
     {               
+        stringVal = " ";                  //Clear out stringVal from previous calls to getProperties
 
         //Iterator through all of the private class member array properties.  If any value is true,
         // use that index to look up the properties' name
         for(int i = 0; i < NUM_OF_BOARD_POSITIONS; ++i)
         {
-            if(this.properties[i] == true)              
+            if(this.properties[i] == true && stringVal == " ")
             {
-                //stringVal += 
+                stringVal += properties[i].name;
             }
+
+            else if(this.properties[i] == true)      //If the player owns that property, then add it to             
+            {                                   //  to stringVal
+
+                stringVal += ", " + properties[i].name;
+            }
+
         }
+
+        return stringVal;
     }
 
+//============================================================
+
     //toString method
-    public String toString(Properties[] properties)
+    public String toString(Property[] properties)
     {
         stringVal = getProperties(properties);
-        return "Player's Token";
+        return "Player's Token:" + token + "\n" + "Player's Wealth: " + wealth + "\n";
 
     }  
 
