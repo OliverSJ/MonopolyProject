@@ -26,7 +26,7 @@ public class Utilities extends Property
     //      diceValue <= 12 and diceValue > 2
     //POST: The amount of rent is calculated depending the number of
     {
-    	int rentAmt;
+    	int rentAmt=0;
         if (p.getNumOfUtilities() == 1)                //Player owns 1 utility 
     	{
             rentAmt = 4 * diceValue;                   //Rent is 4 times diceValue

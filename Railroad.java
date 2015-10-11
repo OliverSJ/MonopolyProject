@@ -66,5 +66,3 @@ public class Railroad extends Property
 	return super.toString();
     }
 }
-
-
