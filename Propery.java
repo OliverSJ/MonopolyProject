@@ -3,48 +3,47 @@
 
 public class Property extends Board
 {
-    protected int price;
-    protected String owner;
+    protected int price;                                 //Buying price of property
+    protected String owner;                              //Owner of property
     
     public Property()
-    //POST: A default Property object is created with address set to 0, name set to null,
-    //         owner set to null, rent set to 10, and price set to 150.
+    //POST: A default Property object is created with address set to 0, name set to " ",
+    //         owner set to "bank", rent set to 10, and price set to 150.
     {
-    	super(0, "");
-    	owner = "";
+    	super(0, " ");
+    	owner = "bank";
     	price = 150;
     }
-    
+     
     public Property(int address, String name, int cost)
     //PRE:  address is initialized and address >= 0
     //      cost >= 0
     //      name is initialized
-    //POST: A Property object is created with class member address set to address, class member
-    //         name set to null, price set to cost, and owner set to null
+    //POST: A Property object is created  with class member address set to address, class member
+    //         name set to name, price set to cost, and owner set to "bank".
     {
     	super(address, name);
     	price = cost;
-    	owner = "";	
+    	owner = "bank";	
     }
     
-    //TODO: Player has to set property in array to true;
     public boolean buy(Player p)
     {
-    	boolean canBuy;
+    	boolean canBuy;                                  //Boolean for if player has money to buy
     	
-    	if (owner.equals(p.getToken()))		        //Owner is bank
+    	if (owner.equals(p.getToken()))		         //Owner is bank
     	{
     		canBuy = p.buyProperties(price, address); //Check if player has money to buy
     		
-    		if(canBuy)                              //player has money
+    		if(canBuy)                               //Player has money to buy property
     		{
-    		    owner = p.getToken();               //set token
-    		    p.setProperties(address);           //player owns location
-    		    return true;                        //successful buy
+    		    owner = p.getToken();                //Set owner to player token
+    		    p.setProperties(address);            //Add location to players array
+    		    return true;                         //Successful buy
     		}
     	}
     	
-    	return false;							//unsuccessful buy
+    	return false;					 //Unsuccessful buy
     }
     
     //TODO: WHAT DO I DO WITH THIS METHOD?
@@ -52,6 +51,12 @@ public class Property extends Board
     public boolean payRent(Player p) 
     {
 	return false;
+    }
+
+    public String toString()
+    //POST: FCTVAL == reutrns string repersentation of object
+    {
+	return super.toString() + "Owner: " + owner + ". Price: " + price + ". ";
     }
 }
 
