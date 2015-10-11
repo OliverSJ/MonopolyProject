@@ -38,7 +38,6 @@ public class Property extends Board
     		if(canBuy)                               //Player has money to buy property
     		{
     		    owner = p.getToken();                //Set owner to player token
-    		    p.setProperties(address);            //Add location to players array
     		    return true;                         //Successful buy
     		}
     	}
