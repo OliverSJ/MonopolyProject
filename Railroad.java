@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 //Programmer: Shagiya Mansuri
 //Railroad Class
 
@@ -65,6 +67,23 @@ public class Railroad extends Property
     {
 	return super.toString();
     }
+    
+    
+    /*Below This line Fayaz Khan*/
+    
+    public String[] getPossibleActions(Player player)
+    {
+    	String [] options = new String[20];
+    	
+    	Arrays.fill(options, ""); //fills it with blank spaces; 
+    	
+    	if(owner.equals("bank"))
+    	{
+    		options[0] = "Buy Property?";
+    		options[1] = "Skip?";
+    		
+    	}
+    	
+    	return options;
+    }
 }
-
-

@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 //Programmer: Shagiya Mansuri
 //Utilties Class
 
@@ -26,7 +28,7 @@ public class Utilities extends Property
     //      diceValue <= 12 and diceValue > 2
     //POST: The amount of rent is calculated depending the number of
     {
-    	int rentAmt;
+    	int rentAmt=0;
         if (p.getNumOfUtilities() == 1)                //Player owns 1 utility 
     	{
             rentAmt = 4 * diceValue;                   //Rent is 4 times diceValue
@@ -74,4 +76,26 @@ public class Utilities extends Property
     {
     	return super.toString();
     }
+    
+    /*Below This line Fayaz Khan*/
+    
+    public String[] getPossibleActions(Player player)
+    {
+    	String [] options = new String[20];
+    	
+    	Arrays.fill(options, ""); //fills it with blank spaces; 
+    	
+    	if(owner.equals("bank"))
+    	{
+    		options[0] = "Buy Property?";
+    		options[1] = "Skip?";
+    
+    	}
+    	
+    	
+    	return options;
+    }
+
+    
+    
 }

@@ -139,7 +139,7 @@ public class Player
     }
 
     public int getPlayerPosition()
-    /POST:  FCTVAL == private class member playerPosition
+    //POST:  FCTVAL == private class member playerPosition
     {
         return playerPosition;
     }

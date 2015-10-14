@@ -30,4 +30,3 @@ public abstract class Board
     	return "Location name: " + name + ". Address: " + address + ". ";
     }
 }
-
